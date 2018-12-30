@@ -1,14 +1,191 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  background-image: url(./img/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -160px;
+  background-attachment: fixed;
+  background-color: #547701
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.container {
+  width:100%;
+  padding:0 20px;
+  box-sizing: border-box;
+  margin:0 auto;
+  max-width:1300px;
+}
+
+
+.grid{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+  align-items: center
+}
+
+.hangman {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  position: relative;
+  padding-top:20px;
+  padding-bottom: 80%;
+}
+
+.word {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  text-align: center;
+  z-index: 1;
+}
+.missedletters{
+  grid-column: 2/3;
+  grid-row: 1/2;
+  z-index: 1;
+}
+
+.hg-images{
+  position: absolute;
+  width:100%;
+}
+
+.letter {
+  display: inline-block;
+  position: relative;
+  height:70px;
+  width:70px;
+  margin:10px 10px;
+  background-color:white;
+  color:black;
+}
+.letter.hide{
+  background-color:rgb(255, 255, 255);
+}
+.letter span.hide{
+  display:none;
+}
+.letter span {
+  color:black;
+  font-size:40px;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+.missedletters span{
+  font-family: 'Luckiest Guy', cursive;
+  font-size:40px;
+  display: block;
+  color:white;
+}
+.missedletter{
+  font-size:50px;
+  display: inline-block;
+  margin:0 5px;
+  color:white;
+  text-transform: uppercase;
+}
+.gamestate{
+  height:100vh;
+  width:100vw;
+  background-color:rgba(0, 0, 0, 0.788);
+  position: absolute;
+  z-index: 2;
+}
+.gamestate .text{
+  position: absolute;
+  left:50%;
+  top:40%;
+  transform: translate(-50%, -50%);
+  font-family: 'Luckiest Guy', cursive;
+  color:white;
+}
+.gamestate .text span#state{
+  display: block;
+  font-size:100px;
+  border-radius:10px;
+  padding:0 20px;
+  text-align: center;
+  margin:auto;
+}
+.gamestate .text span#newword{
+  text-align: center;
+  margin:auto;
+  display: block;
+  color:white;
+  font-size:50px;
+  border:1px dashed  white;
+  border-radius:10px;
+  width:300px;
+}
+.gamestate .text span#newword:hover{
+  cursor: pointer;
+  color:#72a7d1;
+  border:1px dashed  #72a7d1;
+}
+
+@media (max-width: 840px){
+  .grid{
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto auto;
+  }
+  .hangman {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    position: relative;
+    padding-bottom: 90%;
+  }
+  .letter {
+    line-height: 50px;
+    font-size:26px;
+    height:50px;
+    width:50px;
+ 
+  }
+}
+@media (max-width: 360px){
+  .grid{
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+  }
+  .hangman {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    position: relative;
+    padding-top:20%;
+    padding-bottom: 140%;
+  }
+  .missedletters{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin:auto;
+  }
+  .word {
+    grid-column: 1/3;
+    grid-row: 3/4;
+  }
+  .letter {
+    line-height: 50px;
+    font-size:26px;
+    height:50px;
+    width:50px;
+    margin:5px 5px;
+  }
+  .gamestate .text span#state{
+    font-size:80px;
+  }
+  .missedletters span{
+    font-size:30px;
+  }
+  .missedletter{
+    font-size:40px;
+  }
 }
